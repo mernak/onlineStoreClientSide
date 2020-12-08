@@ -1,0 +1,41 @@
+<h1>Product List</h1>
+<div class='table-responsive'>
+    <table class='table'>
+        <thead>
+            <tr>
+                <th>#</th>
+                <th>Name</th>
+                <th>Quantity</th>
+            </tr>
+        </thead> 
+        <tbody>
+            <tr *ngFor="let product of products;">
+                <td>{{product.id}}</td>
+                <td>{{product.name}}</td>
+               <td>
+                Choose From Available Quantity
+                   <select id= {{product.name}}>
+                   <option *ngFor='let in of counter(product.count + 1) ;let i = index' value={{i}}>{{i}}</option>
+                   </select>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <button class="btn btn-success" (click)="addToCart(products)">Add To Cart</button>
+    <button class="btn btn-info" (click)="open(mymodal)"> View Order </button>
+</div>
+   
+<ng-template #mymodal let-modal>
+  <div class="modal-header">
+    <h4 class="modal-title" id="modal-basic-title">View Order</h4>
+    <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+      <span aria-hidden="true">×</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <app-orders [purchased]= 'purchasedProducts'></app-orders>
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-outline-dark" (click)="modal.close('Save click')">Ok</button>
+  </div>
+</ng-template>

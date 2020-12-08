@@ -1,0 +1,23 @@
+<h1>Order List</h1>
+<div class='table-responsive'>
+    <table class='table'>
+        <thead>
+            <tr>
+                <th>#</th>
+                <th>Name</th>
+                <th>Quantity</th>
+            </tr>
+        </thead> 
+        <tbody>
+            <tr *ngFor="let order of purchased;">
+                <td>{{order.id}}</td>
+                <td>{{order.name}}</td>
+               <td>{{order.count}}</td>
+            </tr>
+            <tr>Total Price: <td>  {{finalPrice}} </td></tr>  
+
+        </tbody>
+    </table>
+
+    <button class="btn btn-success" (click)="checkOut()">Check out</button>
+</div>
